@@ -40,7 +40,8 @@ class Common(Configuration):
 
     ALLOWED_HOSTS = ["*"]
     ROOT_URLCONF = 'lisnr-test.urls'
-    SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+    # SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+    SECRET_KEY = "DSAsda"
     WSGI_APPLICATION = 'lisnr-test.wsgi.application'
 
     # Email
@@ -52,11 +53,12 @@ class Common(Configuration):
 
     # Postgres
     DATABASES = {
-        'default': dj_database_url.config(
-            default='postgres://postgres:@postgres:5432/postgres',
-            conn_max_age=int(os.getenv('POSTGRES_CONN_MAX_AGE', 600))
-        )
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
+
 
     # General
     APPEND_SLASH = False
@@ -101,7 +103,7 @@ class Common(Configuration):
 
     # Set DEBUG to False as a default for safety
     # https://docs.djangoproject.com/en/dev/ref/settings/#debug
-    DEBUG = strtobool(os.getenv('DJANGO_DEBUG', 'no'))
+    DEBUG = True
 
     # Password Validation
     # https://docs.djangoproject.com/en/2.0/topics/auth/passwords/#module-django.contrib.auth.password_validation
@@ -185,7 +187,7 @@ class Common(Configuration):
     # Django Rest Framework
     REST_FRAMEWORK = {
         'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-        'PAGE_SIZE': int(os.getenv('DJANGO_PAGINATION_LIMIT', 10)),
+        # 'PAGE_SIZE': int(os.getenv('DJANGO_PAGINATION_LIMIT', 10)),
         'DATETIME_FORMAT': '%Y-%m-%dT%H:%M:%S%z',
         'DEFAULT_RENDERER_CLASSES': (
             'rest_framework.renderers.JSONRenderer',
