@@ -1,4 +1,43 @@
-# lisnr-test
+# How to install lisnr-test
+
+Install Python 3 and pip.
+
+Create virtual environment:
+
+```python -m venv "virtual-environment-name"```
+
+Activate virtual environment:
+
+cd to folder containing virtual environment, then
+
+```source virtual-environment-name/bin/activate```
+
+Install lisnr-test:
+
+```git clone https://github.com/BrandonSersion/lisnr-test```
+
+Install lisnr-test dependencies:
+
+cd to lisnr-test root directory, then
+
+```pip install -r requirements.txt```
+
+Set up the lisnr-test database:
+
+```python manage.py migrate```
+
+Run lisnr-test:
+
+```python manage.py runserver```
+
+# How to run the lisnr-test test suite
+
+Navigate to project root directory.
+
+```python manage.py test```
+
+
+# django-rest-cookiecutter advanced usage
 
 [![Build Status](https://travis-ci.org/BrandonSersion/lisnr-test.svg?branch=master)](https://travis-ci.org/BrandonSersion/lisnr-test)
 [![Built with](https://img.shields.io/badge/Built_with-Cookiecutter_Django_Rest-F7B633.svg)](https://github.com/agconti/cookiecutter-django-rest)

@@ -23,8 +23,7 @@ class Common(Configuration):
         'django_filters',            # for filtering rest endpoints
 
         # Your apps
-        'lisnr-test.users',
-
+        'lisnr-test.timestamp'
     )
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
@@ -41,7 +40,7 @@ class Common(Configuration):
     ALLOWED_HOSTS = ["*"]
     ROOT_URLCONF = 'lisnr-test.urls'
     # SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
-    SECRET_KEY = "DSAsda"
+    SECRET_KEY = "SET ENVIRONMENT VARIABLE INSTEAD FOR SECURITY"
     WSGI_APPLICATION = 'lisnr-test.wsgi.application'
 
     # Email
@@ -181,9 +180,6 @@ class Common(Configuration):
         }
     }
 
-    # Custom user app
-    AUTH_USER_MODEL = 'users.User'
-
     # Django Rest Framework
     REST_FRAMEWORK = {
         'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -194,7 +190,7 @@ class Common(Configuration):
             'rest_framework.renderers.BrowsableAPIRenderer',
         ),
         'DEFAULT_PERMISSION_CLASSES': [
-            'rest_framework.permissions.IsAuthenticated',
+            'rest_framework.permissions.AllowAny',
         ],
         'DEFAULT_AUTHENTICATION_CLASSES': (
             'rest_framework.authentication.SessionAuthentication',

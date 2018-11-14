@@ -14,7 +14,6 @@ class Local(Common):
         BASE_DIR,
         '-s',
         '--nologcapture',
-        '--with-coverage',
         '--with-progressive',
         '--cover-package=lisnr-test'
     ]
